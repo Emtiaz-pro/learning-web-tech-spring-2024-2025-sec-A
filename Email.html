@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>mail</title>
+    <title>Email</title>
 </head>
 <body>
-    <form action="">
-        
-            <legend>E-mail</legend>
-            <table>
-                <tr>
-                    <td><input type="text" name=""></td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="name page.html">
-                            <button type="button">Submit</button>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        
-    </form>
+    <main>
+        <h1 id="abc">Email</h1>
+        <form action="Gender.html" onsubmit="return validcheck()">
+
+            Email: <input type="text" name="email" id="email" value="" />
+            
+            <p id="umsg" style="color: red;"></p>
+            <input type="submit" name="submit" id="submit" value="Submit" />
+        </form>
+    </main>
+
+    <script>
+        function validcheck() {
+            let email = document.getElementById('email').value;
+            let msg = document.getElementById('umsg');
+            
+            if (email === "") 
+            {
+                msg.innerHTML = "Please type your email";
+                msg.style.color= 'red';
+
+                return false;
+            }
+
+            
+            if (!email.includes("@"))
+             {
+                msg.innerHTML = "Your Email address must contain '@' symbol";
+                msg.style.color= 'red';
+
+                return false;
+            }
+
+            
+            if (!email.includes(".com"))
+             {
+                msg.innerHTML = "Invalid Email address";
+                msg.style.color= 'red';
+
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
     
 </body>
 </html>

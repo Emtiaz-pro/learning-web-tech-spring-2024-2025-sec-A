@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>name</title>
+    <title>Name</title>
 </head>
 <body>
-    <form action="">
-        
-            <legend>Name</legend>
-            <table>
-                <tr>
-                    <td><input type="text" name=""></td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="Email.html">
-                            <button type="button">Submit</button>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        
+    <main>
+        <h1 id="abc">Name</h1>
+    <form action="Email.html" onsubmit="return validcheck()">
+        Username :-<input type="text" name="username" id="username" value="" />
+        <p id="umsg"></p>
+       
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="vmsg"></p>
     </form>
-    
+        
+      
+    </main>
+
+    <script>
+        function validcheck()
+         {
+
+           let username = document.getElementById('username').value;  
+           let msg = document.getElementById('umsg');
+           let word = username.split(" ");
+           
+           
+           if (username == "") 
+           {
+            msg.innerHTML = "please type username first!";
+            msg.style.color = 'red';
+
+               return false;
+           }
+
+            if(word.length <2)
+           {
+            msg.innerHTML = "Must contain 2 words";
+            msg.style.color = 'red';
+
+              return false;
+
+           }
+           
+           let user_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.- ";
+           
+           for (let i = 0; i < username.length; i++) 
+           {
+               if (!user_char.includes(username[i]))
+                {
+                   msg.innerHTML = "can only use letters and (dot or dash)";
+                   msg.style.color = 'red';
+
+                   return false;
+               }
+           }
+          
+            
+            let first_Char = username.charAt(0);
+
+           if (!("A" <= first_Char && first_Char <= "Z") && !("a" <= first_Char && first_Char <= "z"))
+            {
+               msg.innerHTML = "Must start with a letter";
+               msg.style.color = 'red';
+
+               return false;
+           }
+           
+           return true;
+
+       }
+
+   </script>
+   
 </body>
 </html>
