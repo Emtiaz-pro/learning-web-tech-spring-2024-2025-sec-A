@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign UP</title>
+</head>
+<body>
+    <main>
+        <h1 id="abc">Register Now !!</h1>
+    <form action="Catalog.html" onsubmit="return validcheck()">
+        Username :-<input type="text" name="username" id="username" value="" />
+        <p id="umsg"></p>
+       
+        <p id="vmsg"></p>
+
+        Email :- <input type="text" name="email" id="email" value="" />
+            
+            <p id="umsg" style="color: red;"></p>
+
+        <table>
+            <tr>
+                <td> Gender : 
+                    <input type="radio" name="Gender">MALE
+                    <input type="radio" name="Gender">FEMALE
+                    <input type="radio" name="Gender">OTHER
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                    <input type="submit" name="submit" id="submit" value="submit" />
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+        </table>
+    </form>
+        
+      
+    </main>
+
+    <script>
+        function validcheck()
+         {
+
+           let username = document.getElementById('username').value;  
+           let msg = document.getElementById('umsg');
+           let word = username.split(" ");
+           
+           
+           if (username == "") 
+           {
+            msg.innerHTML = "please type username first!";
+            msg.style.color = 'red';
+
+               return false;
+           }
+
+            if(word.length <2)
+           {
+            msg.innerHTML = "Must contain First and Last Name";
+            msg.style.color = 'red';
+
+              return false;
+
+           }
+           
+           let user_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_ ";
+           
+           for (let i = 0; i < username.length; i++) 
+           {
+               if (!user_char.includes(username[i]))
+                {
+                   msg.innerHTML = "can only use letters and (dot or dash)";
+                   msg.style.color = 'red';
+
+                   return false;
+               }
+           }
+          
+            
+            let first_Char = username.charAt(0);
+
+           if (!("A" <= first_Char && first_Char <= "Z") && !("a" <= first_Char && first_Char <= "z"))
+            {
+               msg.innerHTML = "Must start with a letter";
+               msg.style.color = 'red';
+
+               return false;
+           }
+
+           let email = document.getElementById('email').value;
+            let msg1 = document.getElementById('umsg');
+            
+            if (email === "") 
+            {
+                msg1.innerHTML = "Please type your email";
+                msg1.style.color= 'red';
+
+                return false;
+            }
+
+            
+            if (!email.includes("@"))
+             {
+                msg1.innerHTML = "Your Email address must contain '@Gmail.com / @Hotmail.com /@Yahoo.com'";
+                msg1.style.color= 'red';
+
+                return false;
+            }
+
+            
+            if (!email.includes(".com"))
+             {
+                msg1.innerHTML = "Invalid Email address";
+                msg1.style.color= 'red';
+
+                return false;
+             }
+           
+           return true;
+
+       }
+
+   </script>
+   
+</body>
+</html>
