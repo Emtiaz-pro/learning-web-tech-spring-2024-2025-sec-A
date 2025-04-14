@@ -2,12 +2,109 @@
 <html lang="en">
 <head>
     <title>Trivia Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 2px solid #cc0000;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #cc0000;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select, textarea {
+            padding: 8px;
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        td {
+            background-color: #fafafa;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a80000;
+        }
+
+        td a {
+            color: #cc0000;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-trivia button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <form>
         <fieldset>
-            <legend>Fun Facts Carousel</legend>
-            <table border="1" cellpadding="10">
+            <legend>FUN FACTS !!</legend>
+            <table>
                 <tr>
                     <td><b>Movie:</b> Inception</td>
                 </tr>
@@ -28,9 +125,10 @@
                 </tr>
             </table>
         </fieldset>
+
         <fieldset>
-            <legend>Easter Egg Hunter</legend>
-            <table border="1" cellpadding="10">
+            <legend>EASTER EGG HUNTER</legend>
+            <table>
                 <tr>
                     <th>Movie</th>
                     <th>Hidden Detail</th>
@@ -53,9 +151,10 @@
                 </tr>
             </table>
         </fieldset>
+
         <fieldset>
-            <legend>Goofs Catalog</legend>
-            <table border="1" cellpadding="10">
+            <legend>GOOFS CATALOG</legend>
+            <table>
                 <tr>
                     <th>Movie</th>
                     <th>Error Type</th>
@@ -73,8 +172,9 @@
                 </tr>
             </table>
         </fieldset>
+
         <fieldset>
-            <legend>Submit Your Own Trivia</legend>
+            <legend>SUBMIT YOUR OWN TRIVIA</legend>
             <table>
                 <tr>
                     <td><label>Movie Title:</label></td>
@@ -95,13 +195,13 @@
                     <td><textarea rows="4" cols="30" placeholder="Write your trivia here..."></textarea></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <button type="button">Submit Trivia</button>
+                    <td colspan="2" class="submit-trivia">
+                        <a href="Catalog.html">
+                        <button type="button">Submit Trivia</button></a>
                     </td>
                 </tr>
             </table>
         </fieldset>
-
     </form>
 </body>
 </html>

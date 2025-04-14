@@ -2,52 +2,177 @@
 <html lang="en">
 <head>
     <title>Media Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 2px solid #cc0000;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #cc0000;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            padding: 8px;
+            width: 99%;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            vertical-align: top;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            width: 33%;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a80000;
+        }
+
+        img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            background-color: #ddd; 
+        }
+
+        b {
+            color: #cc0000;
+        }
+
+    </style>
 </head>
 <body>
     <form>
         <fieldset>
-            <legend>Media Catalog</legend>
+            <legend>MEDIA CATALOG</legend>
+            <label>Search:</label>
+            <input type="text" name="search" placeholder="Search movies...">
+
+            <fieldset>
+            <legend>ADVANCED SEARCH</legend>
+            <label>Genre:</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <select name="genre" style="flex: 1;">
+                    <option>All</option>
+                    <option>Action</option>
+                    <option>Drama</option>
+                    <option>Comedy</option>
+                    <option>Animation</option>
+                    <option>Thriller</option>
+                </select>
+                <tr>
+                    <td>
+                        <a href="Genre.html">
+                            <button type="button">Hybrid Gernre</button>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+            
+
+            <label>Release Year:</label>
+            <select name="year">
+                <option>All</option>
+                <option>1990</option>
+                <option>2000</option>
+                <option>2005</option>
+                <option>2010</option>
+                <option>2015</option>
+                <option>2020</option>
+            </select>
+
+            <label>Minimum Rating:</label>
+            <select name="rating">
+                <option>00</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+                <option>5+</option>
+            </select>
+
+            <label>Language:</label>
+            <select name="language">
+                <option>All</option>
+                <option>English</option>
+                <option>Bangla</option>
+                <option>Spanish</option>
+                <option>French</option>
+            </select>
+        </fieldset>
+        <div style="text-align: center; margin-top: 10px;">
+            <button type="button">OK</button>
+        </div>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>DETAILED VIEW</legend>
             <table>
                 <tr>
                     <td>
-                        <label>Search:</label>
-                        <input type="text" name="search" placeholder="Search movies...">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Filter by Runtime:</label>
-                        <select name="runtime">
-                            <option>All</option>
-                            <option>Under 90 mins</option>
-                            <option>90-120 mins</option>
-                            <option>Over 120 mins</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-        </fieldset>
-
-        <fieldset>
-            <legend>Browse Titles</legend>
-            <table border="1" cellpadding="10">
-                <tr>
-                    <td>
-                        <img src="https://" alt="Inception Poster"><br>
+                        <img src="https://www.impawards.com/2010/posters/inception_ver13.jpg" alt="Inception Poster"><br>
                         <b>Title:</b> Inception<br>
                         <b>Runtime:</b> 148 mins<br>
                         <b>Cast:</b> Leonardo DiCaprio<br>
                         <b>Director:</b> Christopher Nolan
                     </td>
                     <td>
-                        <img src="https://" alt="Toy Story Poster"><br>
+                        <img src="https://image.tmdb.org/t/p/original/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg" alt="Toy Story Poster"><br>
                         <b>Title:</b> Toy Story<br>
                         <b>Runtime:</b> 81 mins<br>
                         <b>Cast:</b> Tom Hanks<br>
                         <b>Director:</b> John Lasseter
                     </td>
                     <td>
-                        <img src="https://" alt="The Dark Knight Poster"><br>
+                        <img src="https://www.impawards.com/2008/posters/dark_knight_ver12.jpg" alt="The Dark Knight Poster"><br>
                         <b>Title:</b> The Dark Knight<br>
                         <b>Runtime:</b> 152 mins<br>
                         <b>Cast:</b> Christian Bale<br>

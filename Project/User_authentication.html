@@ -2,127 +2,199 @@
 <html lang="en">
 <head>
     <title>Sign UP</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .form-container {
+            width: 600px;
+            background-color: rgb(206, 210, 213);
+            border: 1px solid #0a0a0a;
+            padding: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label, input, select {
+            display: block;
+            margin: 10px 0 5px;
+            width: 100%;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            display: inline;
+            width: auto;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9em;
+            height: 1em;
+            color: rgb(222, 25, 25);
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h1 id="abc">Register Now !!</h1>
-    <form action="Catalog.html" onsubmit="return validcheck()">
-        Username :-<input type="text" name="username" id="username" value="" />
-        <p id="umsg"></p>
-       
-        <p id="vmsg"></p>
+    <div class="form-container">
+        <h1 style="text-align: center;">REGISTER NOW !!</h1>
+        <form action="Catalog.html" onsubmit="return validcheck()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" />
+            <p id="umsg"></p>
 
-        Email :- <input type="text" name="email" id="email" value="" />
-            
-            <p id="umsg" style="color: red;"></p>
+            <label for="email">Email:</label>
+            <input type="text" id="email" />
+            <p id="emsg"></p>
 
-        <table>
-            <tr>
-                <td> Gender : 
-                    <input type="radio" name="Gender">MALE
-                    <input type="radio" name="Gender">FEMALE
-                    <input type="radio" name="Gender">OTHER
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br>
-                    <input type="submit" name="submit" id="submit" value="submit" />
-                </td>
-            </tr>
-            <tr>
+            <label for="password">Password:</label>
+            <input type="password" id="password" />
+            <p id="pmsg"></p>
 
-            </tr>
-        </table>
-    </form>
-        
-      
-    </main>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" />
+            <p id="cpmsg"></p>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" />
+            <p id="phmsg"></p>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male" /> Male
+            <input type="radio" name="gender" value="Female" /> Female
+            <p id="gmsg"></p>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" />
+            <p id="dmsg"></p>
+
+            <label for="country">Country:</label>
+            <select id="country">
+                <option value="">Select Country</option>
+                <option value="USA">Bangladesh</option>
+                <option value="India">Australia</option>
+                <option value="UK">Ireland</option>
+            </select>
+            <p id="cmsg"></p>
+
+            <label>
+                <input type="checkbox" id="terms" /> I agree to terms and conditions
+            </label>
+            <p id="tmsg"></p>
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 
     <script>
-        function validcheck()
-         {
+        function validcheck() {
+            let valid = true;
 
-           let username = document.getElementById('username').value;  
-           let msg = document.getElementById('umsg');
-           let word = username.split(" ");
-           
-           
-           if (username == "") 
-           {
-            msg.innerHTML = "please type username first!";
-            msg.style.color = 'red';
-
-               return false;
-           }
-
-            if(word.length <2)
-           {
-            msg.innerHTML = "Must contain First and Last Name";
-            msg.style.color = 'red';
-
-              return false;
-
-           }
-           
-           let user_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_ ";
-           
-           for (let i = 0; i < username.length; i++) 
-           {
-               if (!user_char.includes(username[i]))
-                {
-                   msg.innerHTML = "can only use letters and (dot or dash)";
-                   msg.style.color = 'red';
-
-                   return false;
-               }
-           }
-          
-            
-            let first_Char = username.charAt(0);
-
-           if (!("A" <= first_Char && first_Char <= "Z") && !("a" <= first_Char && first_Char <= "z"))
-            {
-               msg.innerHTML = "Must start with a letter";
-               msg.style.color = 'red';
-
-               return false;
-           }
-
-           let email = document.getElementById('email').value;
-            let msg1 = document.getElementById('umsg');
-            
-            if (email === "") 
-            {
-                msg1.innerHTML = "Please type your email";
-                msg1.style.color= 'red';
-
-                return false;
+            const username = document.getElementById("username").value.trim();
+            const umsg = document.getElementById("umsg");
+            if (username === "" || username.split(" ").length < 2) {
+                umsg.innerText = "Enter first and last name";
+                umsg.style.color = "red";
+                valid = false;
+            } else {
+                umsg.innerText = "";
             }
 
-            
-            if (!email.includes("@"))
-             {
-                msg1.innerHTML = "Your Email address must contain '@Gmail.com / @Hotmail.com /@Yahoo.com'";
-                msg1.style.color= 'red';
-
-                return false;
+            const email = document.getElementById("email").value.trim();
+            const emsg = document.getElementById("emsg");
+            if (!email.includes("@") || !email.includes(".com")) {
+                emsg.innerText = "Enter a valid email";
+                emsg.style.color = "red";
+                valid = false;
+            } else {
+                emsg.innerText = "";
             }
 
-            
-            if (!email.includes(".com"))
-             {
-                msg1.innerHTML = "Invalid Email address";
-                msg1.style.color= 'red';
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            const pmsg = document.getElementById("pmsg");
+            const cpmsg = document.getElementById("cpmsg");
+            if (password.length < 6) {
+                pmsg.innerText = "Password must be at least 6 characters";
+                pmsg.style.color = "red";
+                valid = false;
+            } else {
+                pmsg.innerText = "";
+            }
+            if (password !== confirmPassword) {
+                cpmsg.innerText = "Passwords do not match";
+                cpmsg.style.color = "red";
+                valid = false;
+            } else {
+                cpmsg.innerText = "";
+            }
 
-                return false;
-             }
-           
-           return true;
+            const phone = document.getElementById("phone").value.trim();
+            const phmsg = document.getElementById("phmsg");
+            if (!/^\d{10}$/.test(phone)) {
+                phmsg.innerText = "Enter a 10-digit number";
+                phmsg.style.color = "red";
+                valid = false;
+            } else {
+                phmsg.innerText = "";
+            }
 
-       }
+            const genders = document.getElementsByName("gender");
+            const gmsg = document.getElementById("gmsg");
+            let genderSelected = false;
+            for (let gender of genders) {
+                if (gender.checked) {
+                    genderSelected = true;
+                    break;
+                }
+            }
+            if (!genderSelected) {
+                gmsg.innerText = "Select your gender";
+                gmsg.style.color = "red";
+                valid = false;
+            } else {
+                gmsg.innerText = "";
+            }
 
-   </script>
-   
+            const dob = document.getElementById("dob").value;
+            const dmsg = document.getElementById("dmsg");
+            if (dob === "") {
+                dmsg.innerText = "Select your birth date";
+                dmsg.style.color = "red";
+                valid = false;
+            } else {
+                dmsg.innerText = "";
+            }
+
+            const country = document.getElementById("country").value;
+            const cmsg = document.getElementById("cmsg");
+            if (country === "") {
+                cmsg.innerText = "Select a country";
+                cmsg.style.color = "red";
+                valid = false;
+            } else {
+                cmsg.innerText = "";
+            }
+
+            const terms = document.getElementById("terms").checked;
+            const tmsg = document.getElementById("tmsg");
+            if (!terms) {
+                tmsg.innerText = "You must agree to the terms";
+                tmsg.style.color = "red";
+                valid = false;
+            } else {
+                tmsg.innerText = "";
+            }
+
+            return valid;
+        }
+    </script>
 </body>
 </html>

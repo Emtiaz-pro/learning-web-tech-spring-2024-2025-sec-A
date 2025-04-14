@@ -2,28 +2,92 @@
 <html lang="en">
 <head>
     <title>Actor Profiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 2px solid #cc0000;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            color:#cc0000;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 1em;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #cc0000;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a80000;
+        }
+
+    </style>
 </head>
 <body>
     <form>
         <fieldset>
-            <legend>Select Actor</legend>
-            <table>
-                <tr>
-                    <td>
-                        <select>
-                            <option>-- Choose Actor --</option>
-                            <option>Leonardo DiCaprio</option>
-                            <option>Scarlett Johansson</option>
-                            <option>Tom Hanks</option>
-                            <option>Meryl Streep</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <legend>SELECT ACTOR</legend>
+            <select>
+                <option>-- Choose Actor --</option>
+                <option>Leonardo DiCaprio</option>
+                <option>Scarlett Johansson</option>
+                <option>Tom Hanks</option>
+                <option>Jhony Depp </option>
+            </select>
         </fieldset>
+
         <fieldset>
-            <legend>Filmography Timeline</legend>
-            <table border="1" cellpadding="10">
+            <legend>FILMOGRAPHY TIMELINE</legend>
+            <table>
                 <tr>
                     <th>Year</th>
                     <th>Movie Title</th>
@@ -46,9 +110,10 @@
                 </tr>
             </table>
         </fieldset>
+
         <fieldset>
-            <legend>Collaboration Map</legend>
-            <table border="1" cellpadding="10">
+            <legend>COLLABORATION</legend>
+            <table>
                 <tr>
                     <th>Frequent Co-Star</th>
                     <th>Number of Films</th>
@@ -71,9 +136,10 @@
                 </tr>
             </table>
         </fieldset>
+
         <fieldset>
-            <legend>Award History</legend>
-            <table border="1" cellpadding="10">
+            <legend>AWARD HISTORY</legend>
+            <table>
                 <tr>
                     <th>Award</th>
                     <th>Movie</th>
@@ -84,23 +150,26 @@
                     <td>Oscar</td>
                     <td>The Revenant</td>
                     <td>2016</td>
-                    <td> Won</td>
+                    <td>Won</td>
                 </tr>
                 <tr>
                     <td>Oscar</td>
                     <td>The Aviator</td>
                     <td>2005</td>
-                    <td> Nominated</td>
+                    <td>Nominated</td>
                 </tr>
                 <tr>
                     <td>Golden Globe</td>
                     <td>The Wolf of Wall Street</td>
                     <td>2014</td>
-                    <td> Won</td>
+                    <td>Won</td>
                 </tr>
             </table>
         </fieldset>
-
-    </form>
+        <div style="text-align: center; margin-top: 10px;">
+            <a href="Catalog.html">
+                <button type="button">OK</button>
+            </a>
+        </div>        
 </body>
 </html>
