@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    #calcScreen {
+      font-size: 28px;
+      text-align: right;
+      width: 280px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      width: 65px;
+      height: 65px;
+      font-size: 24px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    let expression = "";
+
+    const title = document.createElement("h2");
+    title.innerText = "CALCULATOR";
+    document.body.appendChild(title);
+
+    const screen = document.createElement("input");
+    screen.type = "text";
+    screen.id = "calcScreen";
+    screen.disabled = true;
+    document.body.appendChild(screen);
+    document.body.appendChild(document.createElement("br"));
+
+
+    const btn7 = document.createElement("button");
+    btn7.innerText = "7";
+    btn7.className = "button";
+    btn7.onclick = function() { addToExpression("7"); };
+    document.body.appendChild(btn7);
+
+    const btn8 = document.createElement("button");
+    btn8.innerText = "8";
+    btn8.className = "button";
+    btn8.onclick = function() { addToExpression("8"); };
+    document.body.appendChild(btn8);
+
+    const btn9 = document.createElement("button");
+    btn9.innerText = "9";
+    btn9.className = "button";
+    btn9.onclick = function() { addToExpression("9"); };
+    document.body.appendChild(btn9);
+
+    const btnDivide = document.createElement("button");
+    btnDivide.innerText = "/";
+    btnDivide.className = "button";
+    btnDivide.onclick = function() { addToExpression("/"); };
+    document.body.appendChild(btnDivide);
+
+    document.body.appendChild(document.createElement("br"));
+
+    
+    const btn4 = document.createElement("button");
+    btn4.innerText = "4";
+    btn4.className = "button";
+    btn4.onclick = function() { addToExpression("4"); };
+    document.body.appendChild(btn4);
+
+    const btn5 = document.createElement("button");
+    btn5.innerText = "5";
+    btn5.className = "button";
+    btn5.onclick = function() { addToExpression("5"); };
+    document.body.appendChild(btn5);
+
+    const btn6 = document.createElement("button");
+    btn6.innerText = "6";
+    btn6.className = "button";
+    btn6.onclick = function() { addToExpression("6"); };
+    document.body.appendChild(btn6);
+
+    const btnMultiply = document.createElement("button");
+    btnMultiply.innerText = "*";
+    btnMultiply.className = "button";
+    btnMultiply.onclick = function()
+    {
+         addToExpression("*");
+    };
+    document.body.appendChild(btnMultiply);
+
+    document.body.appendChild(document.createElement("br"));
+
+    const btn1 = document.createElement("button");
+    btn1.innerText = "1";
+    btn1.className = "button";
+    btn1.onclick = function() 
+    {
+         addToExpression("1");
+    };
+    document.body.appendChild(btn1);
+
+    const btn2 = document.createElement("button");
+    btn2.innerText = "2";
+    btn2.className = "button";
+    btn2.onclick = function() 
+    { 
+        addToExpression("2");
+
+     };
+    document.body.appendChild(btn2);
+
+    const btn3 = document.createElement("button");
+    btn3.innerText = "3";
+    btn3.className = "button";
+    btn3.onclick = function() 
+    {
+         addToExpression("3");
+     };
+    document.body.appendChild(btn3);
+
+    const btnMinus = document.createElement("button");
+    btnMinus.innerText = "-";
+    btnMinus.className = "button";
+    btnMinus.onclick = function() 
+    {
+         addToExpression("-");
+     };
+    document.body.appendChild(btnMinus);
+
+    document.body.appendChild(document.createElement("br"));
+
+
+    const btn0 = document.createElement("button");
+    btn0.innerText = "0";
+    btn0.className = "button";
+    btn0.onclick = function() 
+    {
+         addToExpression("0");
+     };
+    document.body.appendChild(btn0);
+
+    const btnEqual = document.createElement("button");
+    btnEqual.innerText = "=";
+    btnEqual.className = "button";
+    btnEqual.onclick = function() 
+    {
+         calculate(); 
+    };
+    document.body.appendChild(btnEqual);
+
+    const btnClear = document.createElement("button");
+    btnClear.innerText = "C";
+    btnClear.className = "button";
+    btnClear.onclick = function() 
+    {
+         clearScreen();
+    };
+    document.body.appendChild(btnClear);
+
+    const btnPlus = document.createElement("button");
+    btnPlus.innerText = "+";
+    btnPlus.className = "button";
+    btnPlus.onclick = function()
+     { 
+        addToExpression("+"); 
+
+     };
+    document.body.appendChild(btnPlus);
+
+    document.body.appendChild(document.createElement("br"));
+
+    
+    function addToExpression(value) 
+    {
+      expression = expression + value;
+      screen.value = expression;
+    }
+
+    function clearScreen() 
+    {
+      expression = "";
+      screen.value = "";
+    }
+
+    
+    function calculate() 
+    {
+      try
+       {
+        let result = eval(expression);
+        expression = result.toString();
+        screen.value = expression;
+      }
+       catch
+        {
+        screen.value = "Error";
+        expression = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
