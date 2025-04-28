@@ -59,6 +59,7 @@
             background-color: #fafafa;
             width: 33%;
         }
+
         button {
             padding: 10px 20px;
             background-color: #cc0000;
@@ -86,20 +87,27 @@
             color: #cc0000;
         }
 
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <form>
         <fieldset>
             <legend>MEDIA CATALOG</legend>
+
             <label>Search:</label>
-            <input type="text" name="search" placeholder="Search movies...">
+            <input type="text" id="searchInput" placeholder="Search movies...">
 
             <fieldset>
-            <legend>ADVANCED SEARCH</legend>
-            <label>Genre:</label>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <select name="genre" style="flex: 1;">
+                <legend>ADVANCED SEARCH</legend>
+
+                <label>Genre:</label>
+                <select id="genreSelect">
                     <option>All</option>
                     <option>Action</option>
                     <option>Drama</option>
@@ -107,80 +115,168 @@
                     <option>Animation</option>
                     <option>Thriller</option>
                 </select>
-                <tr>
-                    <td>
-                        <a href="Genre.html">
-                            <button type="button">Hybrid Gernre</button>
-                        </a>
-                    </td>
-                </tr>
+
+                <label>Release Year:</label>
+                <select id="yearSelect">
+                    <option>All</option>
+                    <option>1990</option>
+                    <option>2000</option>
+                    <option>2005</option>
+                    <option>2010</option>
+                    <option>2015</option>
+                    <option>2020</option>
+                </select>
+
+                <label>Minimum Rating:</label>
+                <select id="ratingSelect">
+                    <option>00</option>
+                    <option>1+</option>
+                    <option>2+</option>
+                    <option>3+</option>
+                    <option>4+</option>
+                    <option>5+</option>
+                </select>
+
+                <label>Language:</label>
+                <select id="languageSelect">
+                    <option>All</option>
+                    <option>English</option>
+                    <option>Bangla</option>
+                    <option>Spanish</option>
+                    <option>French</option>
+                </select>
+
+            </fieldset>
+
+            <!-- Buttons: OK + Genre Builder -->
+            <div class="button-group">
+                <button type="button" id="okButton">OK</button>
+                <button type="button" id="genreBuilderButton">Genre Builder</button>
             </div>
-            
 
-            <label>Release Year:</label>
-            <select name="year">
-                <option>All</option>
-                <option>1990</option>
-                <option>2000</option>
-                <option>2005</option>
-                <option>2010</option>
-                <option>2015</option>
-                <option>2020</option>
-            </select>
-
-            <label>Minimum Rating:</label>
-            <select name="rating">
-                <option>00</option>
-                <option>1+</option>
-                <option>2+</option>
-                <option>3+</option>
-                <option>4+</option>
-                <option>5+</option>
-            </select>
-
-            <label>Language:</label>
-            <select name="language">
-                <option>All</option>
-                <option>English</option>
-                <option>Bangla</option>
-                <option>Spanish</option>
-                <option>French</option>
-            </select>
         </fieldset>
-        <div style="text-align: center; margin-top: 10px;">
-            <button type="button">OK</button>
-        </div>
-        </fieldset>
-
 
         <fieldset>
             <legend>DETAILED VIEW</legend>
-            <table>
-                <tr>
-                    <td>
-                        <img src="https://www.impawards.com/2010/posters/inception_ver13.jpg" alt="Inception Poster"><br>
-                        <b>Title:</b> Inception<br>
-                        <b>Runtime:</b> 148 mins<br>
-                        <b>Cast:</b> Leonardo DiCaprio<br>
-                        <b>Director:</b> Christopher Nolan
-                    </td>
-                    <td>
-                        <img src="https://image.tmdb.org/t/p/original/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg" alt="Toy Story Poster"><br>
-                        <b>Title:</b> Toy Story<br>
-                        <b>Runtime:</b> 81 mins<br>
-                        <b>Cast:</b> Tom Hanks<br>
-                        <b>Director:</b> John Lasseter
-                    </td>
-                    <td>
-                        <img src="https://www.impawards.com/2008/posters/dark_knight_ver12.jpg" alt="The Dark Knight Poster"><br>
-                        <b>Title:</b> The Dark Knight<br>
-                        <b>Runtime:</b> 152 mins<br>
-                        <b>Cast:</b> Christian Bale<br>
-                        <b>Director:</b> Christopher Nolan
-                    </td>
-                </tr>
+            <table id="movieTable">
+                <!-- Movies will show here -->
             </table>
         </fieldset>
     </form>
+
+    <script>
+        // Movies data
+        var movies = [
+            {
+                title: "Inception",
+                runtime: "148 mins",
+                cast: "Leonardo DiCaprio",
+                director: "Christopher Nolan",
+                genre: "Action",
+                year: "2010",
+                rating: 5,
+                language: "English",
+                poster: "https://www.impawards.com/2010/posters/inception_ver13.jpg"
+            },
+            {
+                title: "Toy Story",
+                runtime: "81 mins",
+                cast: "Tom Hanks",
+                director: "John Lasseter",
+                genre: "Animation",
+                year: "1995",
+                rating: 4,
+                language: "English",
+                poster: "https://image.tmdb.org/t/p/original/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+            },
+            {
+                title: "The Dark Knight",
+                runtime: "152 mins",
+                cast: "Christian Bale",
+                director: "Christopher Nolan",
+                genre: "Action",
+                year: "2008",
+                rating: 5,
+                language: "English",
+                poster: "https://www.impawards.com/2008/posters/dark_knight_ver12.jpg"
+            }
+        ];
+
+        // Get elements
+        var searchInput = document.getElementById('searchInput');
+        var genreSelect = document.getElementById('genreSelect');
+        var yearSelect = document.getElementById('yearSelect');
+        var ratingSelect = document.getElementById('ratingSelect');
+        var languageSelect = document.getElementById('languageSelect');
+        var okButton = document.getElementById('okButton');
+        var genreBuilderButton = document.getElementById('genreBuilderButton');
+        var movieTable = document.getElementById('movieTable');
+
+        // When OK button clicked
+        okButton.onclick = function() {
+            var search = searchInput.value.toLowerCase();
+            var genre = genreSelect.value;
+            var year = yearSelect.value;
+            var rating = ratingSelect.value;
+            var language = languageSelect.value;
+
+            var result = [];
+
+            for (var i = 0; i < movies.length; i++) {
+                var movie = movies[i];
+
+                if (search !== "") {
+                    if (movie.title.toLowerCase().includes(search)) {
+                        result.push(movie);
+                    }
+                } else {
+                    if ((genre === "All" || movie.genre === genre) &&
+                        (year === "All" || movie.year === year) &&
+                        (rating === "00" || movie.rating >= parseInt(rating)) &&
+                        (language === "All" || movie.language === language)) {
+                        result.push(movie);
+                    }
+                }
+            }
+
+            showMovies(result);
+        };
+
+        // When Genre Builder button clicked
+        genreBuilderButton.onclick = function() {
+            window.location.href = "Genre.html"; // Go to Genre.html
+        };
+
+        // Function to show movies
+        function showMovies(movieList) {
+            var html = "";
+
+            if (movieList.length === 0) {
+                html = "<tr><td colspan='3' style='text-align:center;'>No movies found.</td></tr>";
+            } else {
+                html = "<tr>";
+                for (var i = 0; i < movieList.length; i++) {
+                    var m = movieList[i];
+                    html += "<td>";
+                    html += "<img src='" + m.poster + "' alt='" + m.title + "'><br>";
+                    html += "<b>Title:</b> " + m.title + "<br>";
+                    html += "<b>Runtime:</b> " + m.runtime + "<br>";
+                    html += "<b>Cast:</b> " + m.cast + "<br>";
+                    html += "<b>Director:</b> " + m.director + "<br>";
+                    html += "</td>";
+
+                    if ((i + 1) % 3 === 0) {
+                        html += "</tr><tr>";
+                    }
+                }
+                html += "</tr>";
+            }
+
+            movieTable.innerHTML = html;
+        }
+
+        // Show all movies at start
+        showMovies(movies);
+    </script>
 </body>
 </html>

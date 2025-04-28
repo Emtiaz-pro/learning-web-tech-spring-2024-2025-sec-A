@@ -170,6 +170,152 @@
             <a href="Catalog.html">
                 <button type="button">OK</button>
             </a>
-        </div>        
+        </div>  
+        <script>
+            function updateActorProfile() {
+                const actorSelect = document.querySelector("select");
+                const actor = actorSelect.value.trim();
+        
+                // Get table bodies (clear and refill later)
+                const filmographyTable = document.querySelectorAll("fieldset")[1].querySelector("table");
+                const collaborationTable = document.querySelectorAll("fieldset")[2].querySelector("table");
+                const awardsTable = document.querySelectorAll("fieldset")[3].querySelector("table");
+        
+                // Clear previous rows (keep headers)
+                filmographyTable.innerHTML = `
+                    <tr>
+                        <th>Year</th>
+                        <th>Movie Title</th>
+                        <th>Role</th>
+                    </tr>
+                `;
+                collaborationTable.innerHTML = `
+                    <tr>
+                        <th>Frequent Co-Star</th>
+                        <th>Number of Films</th>
+                        <th>Example Movies</th>
+                    </tr>
+                `;
+                awardsTable.innerHTML = `
+                    <tr>
+                        <th>Award</th>
+                        <th>Movie</th>
+                        <th>Year</th>
+                        <th>Status</th>
+                    </tr>
+                `;
+        
+                if (actor === "-- Choose Actor --") {
+                    return;
+                }
+        
+                // Predefined actor data
+                const actorData = {
+                    "Leonardo DiCaprio": {
+                        filmography: [
+                            { year: 2010, title: "Inception", role: "Dom Cobb" },
+                            { year: 2013, title: "The Wolf of Wall Street", role: "Jordan Belfort" },
+                            { year: 2015, title: "The Revenant", role: "Hugh Glass" }
+                        ],
+                        collaborations: [
+                            { name: "Tom Hardy", films: 2, examples: "Inception, The Revenant" },
+                            { name: "Kate Winslet", films: 2, examples: "Titanic, Revolutionary Road" },
+                            { name: "Martin Scorsese (Director)", films: 5, examples: "Aviator, Shutter Island, etc." }
+                        ],
+                        awards: [
+                            { award: "Oscar", movie: "The Revenant", year: 2016, status: "Won" },
+                            { award: "Oscar", movie: "The Aviator", year: 2005, status: "Nominated" },
+                            { award: "Golden Globe", movie: "The Wolf of Wall Street", year: 2014, status: "Won" }
+                        ]
+                    },
+                    "Scarlett Johansson": {
+                        filmography: [
+                            { year: 2012, title: "The Avengers", role: "Black Widow" },
+                            { year: 2019, title: "Marriage Story", role: "Nicole Barber" },
+                            { year: 2021, title: "Black Widow", role: "Natasha Romanoff" }
+                        ],
+                        collaborations: [
+                            { name: "Chris Evans", films: 4, examples: "Avengers series" },
+                            { name: "Florence Pugh", films: 1, examples: "Black Widow" }
+                        ],
+                        awards: [
+                            { award: "Oscar", movie: "Marriage Story", year: 2020, status: "Nominated" },
+                            { award: "BAFTA", movie: "Lost in Translation", year: 2004, status: "Won" }
+                        ]
+                    },
+                    "Tom Hanks": {
+                        filmography: [
+                            { year: 1994, title: "Forrest Gump", role: "Forrest Gump" },
+                            { year: 1998, title: "Saving Private Ryan", role: "Captain John Miller" },
+                            { year: 2000, title: "Cast Away", role: "Chuck Noland" }
+                        ],
+                        collaborations: [
+                            { name: "Steven Spielberg (Director)", films: 5, examples: "Saving Private Ryan, The Post" },
+                            { name: "Meg Ryan", films: 3, examples: "You've Got Mail, Sleepless in Seattle" }
+                        ],
+                        awards: [
+                            { award: "Oscar", movie: "Forrest Gump", year: 1995, status: "Won" },
+                            { award: "Oscar", movie: "Philadelphia", year: 1994, status: "Won" },
+                            { award: "Golden Globe", movie: "Cast Away", year: 2001, status: "Won" }
+                        ]
+                    },
+                    "Jhony Depp": {
+                        filmography: [
+                            { year: 2003, title: "Pirates of the Caribbean", role: "Jack Sparrow" },
+                            { year: 2005, title: "Charlie and the Chocolate Factory", role: "Willy Wonka" },
+                            { year: 2015, title: "Black Mass", role: "Whitey Bulger" }
+                        ],
+                        collaborations: [
+                            { name: "Tim Burton (Director)", films: 8, examples: "Edward Scissorhands, Sweeney Todd" },
+                            { name: "Helena Bonham Carter", films: 6, examples: "Corpse Bride, Alice in Wonderland" }
+                        ],
+                        awards: [
+                            { award: "Oscar", movie: "Pirates of the Caribbean", year: 2004, status: "Nominated" },
+                            { award: "Golden Globe", movie: "Sweeney Todd", year: 2008, status: "Won" }
+                        ]
+                    }
+                };
+        
+                const data = actorData[actor];
+        
+                // Fill Filmography
+                for (let movie of data.filmography) {
+                    const row = `<tr>
+                                    <td>${movie.year}</td>
+                                    <td>${movie.title}</td>
+                                    <td>${movie.role}</td>
+                                </tr>`;
+                    filmographyTable.innerHTML += row;
+                }
+        
+                // Fill Collaborations
+                for (let collab of data.collaborations) {
+                    const row = `<tr>
+                                    <td>${collab.name}</td>
+                                    <td>${collab.films}</td>
+                                    <td>${collab.examples}</td>
+                                </tr>`;
+                    collaborationTable.innerHTML += row;
+                }
+        
+                // Fill Awards
+                for (let award of data.awards) {
+                    const row = `<tr>
+                                    <td>${award.award}</td>
+                                    <td>${award.movie}</td>
+                                    <td>${award.year}</td>
+                                    <td>${award.status}</td>
+                                </tr>`;
+                    awardsTable.innerHTML += row;
+                }
+            }
+        
+            // Event listener
+            window.onload = function() {
+                const actorSelect = document.querySelector("select");
+                actorSelect.addEventListener("change", updateActorProfile);
+            }
+        </script>
+              
 </body>
 </html>

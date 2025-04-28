@@ -7,44 +7,82 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            background-color: #f2f2f2;
             font-family: Arial, sans-serif;
             margin: 0;
         }
 
         .form-container {
-            width: 600px;
-            background-color: rgb(206, 210, 213);
-            border: 1px solid #0a0a0a;
-            padding: 20px;
+            width: 500px;
+            background-color: #ffffff;
+            border: 2px solid #cc0000;
+            border-radius: 10px;
+            padding: 30px;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #cc0000;
+            margin-bottom: 20px;
         }
 
         form {
-            text-align: left;
+            display: flex;
+            flex-direction: column;
         }
 
-        label, input, select {
-            display: block;
-            margin: 10px 0 5px;
-            width: 100%;
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #cc0000;
         }
 
-        input[type="radio"], input[type="checkbox"] {
-            display: inline;
-            width: auto;
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-top: 10px;
         }
 
         p {
-            margin: 0;
-            font-size: 0.9em;
+            margin: 2px 0 10px;
+            font-size: 0.85em;
+            color: red;
             height: 1em;
-            color: rgb(222, 25, 25);
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        input[type="submit"]:hover {
+            background-color: #a80000;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h1 style="text-align: center;">REGISTER NOW !!</h1>
+        <h1>REGISTER NOW !!</h1>
         <form action="Catalog.html" onsubmit="return validcheck()">
             <label for="username">Username:</label>
             <input type="text" id="username" />
@@ -67,8 +105,10 @@
             <p id="phmsg"></p>
 
             <label>Gender:</label>
-            <input type="radio" name="gender" value="Male" /> Male
-            <input type="radio" name="gender" value="Female" /> Female
+            <div>
+                <input type="radio" name="gender" value="Male" /> Male
+                <input type="radio" name="gender" value="Female" /> Female
+            </div>
             <p id="gmsg"></p>
 
             <label for="dob">Date of Birth:</label>
@@ -78,9 +118,9 @@
             <label for="country">Country:</label>
             <select id="country">
                 <option value="">Select Country</option>
-                <option value="USA">Bangladesh</option>
-                <option value="India">Australia</option>
-                <option value="UK">Ireland</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Australia">Australia</option>
+                <option value="Ireland">Ireland</option>
             </select>
             <p id="cmsg"></p>
 
@@ -101,7 +141,6 @@
             const umsg = document.getElementById("umsg");
             if (username === "" || username.split(" ").length < 2) {
                 umsg.innerText = "Enter first and last name";
-                umsg.style.color = "red";
                 valid = false;
             } else {
                 umsg.innerText = "";
@@ -111,7 +150,6 @@
             const emsg = document.getElementById("emsg");
             if (!email.includes("@") || !email.includes(".com")) {
                 emsg.innerText = "Enter a valid email";
-                emsg.style.color = "red";
                 valid = false;
             } else {
                 emsg.innerText = "";
@@ -123,14 +161,12 @@
             const cpmsg = document.getElementById("cpmsg");
             if (password.length < 6) {
                 pmsg.innerText = "Password must be at least 6 characters";
-                pmsg.style.color = "red";
                 valid = false;
             } else {
                 pmsg.innerText = "";
             }
             if (password !== confirmPassword) {
                 cpmsg.innerText = "Passwords do not match";
-                cpmsg.style.color = "red";
                 valid = false;
             } else {
                 cpmsg.innerText = "";
@@ -140,7 +176,6 @@
             const phmsg = document.getElementById("phmsg");
             if (!/^\d{10}$/.test(phone)) {
                 phmsg.innerText = "Enter a 10-digit number";
-                phmsg.style.color = "red";
                 valid = false;
             } else {
                 phmsg.innerText = "";
@@ -157,7 +192,6 @@
             }
             if (!genderSelected) {
                 gmsg.innerText = "Select your gender";
-                gmsg.style.color = "red";
                 valid = false;
             } else {
                 gmsg.innerText = "";
@@ -167,7 +201,6 @@
             const dmsg = document.getElementById("dmsg");
             if (dob === "") {
                 dmsg.innerText = "Select your birth date";
-                dmsg.style.color = "red";
                 valid = false;
             } else {
                 dmsg.innerText = "";
@@ -177,7 +210,6 @@
             const cmsg = document.getElementById("cmsg");
             if (country === "") {
                 cmsg.innerText = "Select a country";
-                cmsg.style.color = "red";
                 valid = false;
             } else {
                 cmsg.innerText = "";
@@ -187,7 +219,6 @@
             const tmsg = document.getElementById("tmsg");
             if (!terms) {
                 tmsg.innerText = "You must agree to the terms";
-                tmsg.style.color = "red";
                 valid = false;
             } else {
                 tmsg.innerText = "";

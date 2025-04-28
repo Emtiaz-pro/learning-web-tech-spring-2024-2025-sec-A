@@ -3,6 +3,7 @@
 <head>
     <title>Streaming Links</title>
     <style>
+        /* (your CSS is good, I didn't change anything here) */
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -128,26 +129,26 @@
     <form>
         <fieldset>
             <legend>SERVICE</legend>
-            <table class="streaming-links">
+            <table class="streaming-links" id="serviceTable">
                 <tr>
                     <th>Streaming Service</th>
                     <th>Available In</th>
                     <th>Link</th>
                 </tr>
-                <tr>
+                <tr data-regions="Bangladesh,Australia,Ireland">
                     <td>Netflix</td>
                     <td>Bangladesh, Australia, Ireland</td>
-                    <td><a href="https://www.netflix.com/signup/planform">Watch on Netflix</a></td>
+                    <td><a href="https://www.netflix.com/signup/planform" target="_blank">Watch on Netflix</a></td>
                 </tr>
-                <tr>
+                <tr data-regions="Bangladesh,Australia,Germany">
                     <td>Amazon Prime</td>
                     <td>Bangladesh, Australia, Germany</td>
-                    <td><a href="https://www.primevideo.com/offers/nonprimehomepage/ref=dv_web_force_root">Watch on Prime</a></td>
+                    <td><a href="https://www.primevideo.com/offers/nonprimehomepage/ref=dv_web_force_root" target="_blank">Watch on Prime</a></td>
                 </tr>
-                <tr>
+                <tr data-regions="Bangladesh,Australia,Germany">
                     <td>Disney+</td>
                     <td>Bangladesh, Australia, Germany</td>
-                    <td><a href="https://www.disneyplus.com/welcome/unavailable">Watch on Disney+</a></td>
+                    <td><a href="https://www.disneyplus.com/welcome/unavailable" target="_blank">Watch on Disney+</a></td>
                 </tr>
             </table>
         </fieldset>
@@ -182,12 +183,12 @@
             <legend>REGION ALERT</legend>
             <div class="region-select">
                 <label>Select Your Region:</label>
-                <select>
-                    <option>-- Choose Region --</option>
-                    <option>Ireland</option>
-                    <option>Bangladesh</option>
-                    <option>Australia</option>
-                    <option>Germany</option>
+                <select id="regionSelect">
+                    <option value="">-- Choose Region --</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
                 </select>
             </div>
             <div class="region-alert">
@@ -196,9 +197,35 @@
             </div>
             <div style="text-align: center; margin-top: 10px;">
                 <a href="Catalog.html">
-                <button type="button">OK</button></a>
+                    <button type="button">OK</button>
+                </a>
             </div>
         </fieldset>
     </form>
+
+    <script>
+        var regionSelect = document.getElementById('regionSelect');
+        var serviceTable = document.getElementById('serviceTable');
+
+        regionSelect.onchange = function() {
+            var selectedRegion = regionSelect.value;
+            var rows = serviceTable.getElementsByTagName('tr');
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var regions = row.getAttribute('data-regions');
+
+                if (regions && selectedRegion) {
+                    if (regions.includes(selectedRegion)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                } else {
+                    row.style.display = "";
+                }
+            }
+        };
+    </script>
 </body>
 </html>
