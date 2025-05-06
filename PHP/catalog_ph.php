@@ -288,7 +288,9 @@
 </html>
 
 <?php
-    }else{
+    }
+
+    else{
         header('location: User_authentication.html');
     }
 
