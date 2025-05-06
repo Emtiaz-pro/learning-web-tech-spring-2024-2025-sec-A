@@ -1,4 +1,5 @@
 <?php
+session_start();
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -57,17 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Final check
     if (empty($errors)) {
-        echo "<h2 style='color:green;'>Form Submitted Successfully!</h2>";
-        echo "<h3>User Details:</h3>";
-        echo "<ul>";
-        echo "<li><strong>Username:</strong> " . htmlspecialchars($username) . "</li>";
-        echo "<li><strong>Email:</strong> " . htmlspecialchars($email) . "</li>";
-        echo "<li><strong>Phone Number:</strong> " . htmlspecialchars($phone) . "</li>";
-        echo "<li><strong>Gender:</strong> " . htmlspecialchars($gender) . "</li>";
-        echo "<li><strong>Date of Birth:</strong> " . htmlspecialchars($dob) . "</li>";
-        echo "<li><strong>Country:</strong> " . htmlspecialchars($country) . "</li>";
-        echo "</ul>";
-        echo "<p><a href='javascript:history.back()'>← Back to form</a></p>";
+        $_SESSION['status'] = true;
+        header('location: catalog.html');
+        // echo "<h2 style='color:green;'>Form Submitted Successfully!</h2>";
+        // echo "<h3>User Details:</h3>";
+        // echo "<ul>";
+        // echo "<li><strong>Username:</strong> " . htmlspecialchars($username) . "</li>";
+        // echo "<li><strong>Email:</strong> " . htmlspecialchars($email) . "</li>";
+        // echo "<li><strong>Phone Number:</strong> " . htmlspecialchars($phone) . "</li>";
+        // echo "<li><strong>Gender:</strong> " . htmlspecialchars($gender) . "</li>";
+        // echo "<li><strong>Date of Birth:</strong> " . htmlspecialchars($dob) . "</li>";
+        // echo "<li><strong>Country:</strong> " . htmlspecialchars($country) . "</li>";
+        // echo "</ul>";
+        // echo "<p><a href='javascript:history.back()'>← Back to form</a></p>";
     } else {
         echo "<h3 style='color:red;'>Please correct the following errors:</h3><ul>";
         foreach ($errors as $msg) {
